@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AetherTech Solutions &mdash; Technology for Commerce &amp; Payments</title>
+  <meta name="description" content="AetherTech Solutions Sdn. Bhd. is a technology consultancy and software solutions firm headquartered in Kuala Lumpur, specialising in commerce and payments platforms.">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --ink: #1a1a18;
+      --ink-mid: #4a4a46;
+      --ink-muted: #8a8a84;
+      --rule: #d4d4cc;
+      --paper: #f7f6f2;
+      --accent: #b8860b;
+      --accent-light: #f0e8d0;
+      --mono: 'Courier New', Courier, monospace;
+      --page: 780px;
+    }
+
+    html {
+      font-size: 15px;
+      background: var(--paper);
+      color: var(--ink);
+    }
+
+    body {
+      font-family: var(--mono);
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: var(--paper);
+      border-bottom: 1px solid var(--rule);
+      padding: 0 2rem;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: baseline;
+      gap: 0.6rem;
+      text-decoration: none;
+    }
+
+    .nav-logo .ae {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+      line-height: 1;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .nav-logo .wordmark {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--ink-mid);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-mid);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* ── LAYOUT ── */
+    main {
+      padding-top: 52px;
+      max-width: var(--page);
+      margin: 0 auto;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    section {
+      padding: 5rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    section:last-of-type {
+      border-bottom: none;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      padding: 7rem 0 6rem;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .hero-mark {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 9rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .hero-text {
+      padding-top: 1rem;
+    }
+
+    .hero-text h1 {
+      font-family: var(--mono);
+      font-size: 1.05rem;
+      font-weight: normal;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-text .tagline {
+      font-size: 0.85rem;
+      color: var(--ink-muted);
+      letter-spacing: 0.06em;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-text .intro {
+      font-size: 0.95rem;
+      color: var(--ink);
+      max-width: 480px;
+      border-left: 2px solid var(--accent);
+      padding-left: 1.25rem;
+    }
+
+    /* ── SECTION HEADERS ── */
+    .section-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    /* ── ABOUT ── */
+    .about-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+
+    .about-body p {
+      font-size: 0.9rem;
+      color: var(--ink-mid);
+      line-height: 1.85;
+    }
+
+    .about-body p + p {
+      margin-top: 1rem;
+    }
+
+    .about-col-right {
+      border-left: 1px solid var(--rule);
+      padding-left: 2.5rem;
+    }
+
+    /* ── SERVICES ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border: 1px solid var(--rule);
+    }
+
+    .service-item {
+      padding: 2rem 1.75rem;
+      border-right: 1px solid var(--rule);
+    }
+
+    .service-item:last-child {
+      border-right: none;
+    }
+
+    .service-num {
+      font-size: 0.65rem;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      margin-bottom: 1.25rem;
+    }
+
+    .service-title {
+      font-size: 0.85rem;
+      font-weight: bold;
+      color: var(--ink);
+      letter-spacing: 0.04em;
+      margin-bottom: 0.85rem;
+    }
+
+    .service-body {
+      font-size: 0.82rem;
+      color: var(--ink-mid);
+      line-height: 1.8;
+    }
+
+    /* ── WHY ── */
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem 3rem;
+    }
+
+    .why-item {
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .why-title {
+      font-size: 0.82rem;
+      font-weight: bold;
+      color: var(--ink);
+      letter-spacing: 0.06em;
+      margin-bottom: 0.6rem;
+    }
+
+    .why-body {
+      font-size: 0.82rem;
+      color: var(--ink-mid);
+      line-height: 1.8;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+      padding-bottom: 6rem;
+    }
+
+    .contact-left .section-label {
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-cta {
+      font-size: 0.9rem;
+      color: var(--ink-mid);
+      margin-bottom: 2rem;
+      line-height: 1.85;
+    }
+
+    .contact-email {
+      display: inline-block;
+      font-size: 0.95rem;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 1px;
+    }
+
+    .contact-email:hover {
+      color: var(--ink);
+      border-color: var(--ink);
+    }
+
+    .contact-right {
+      border-left: 1px solid var(--rule);
+      padding-left: 3rem;
+      padding-top: 3.5rem;
+    }
+
+    .reg-block {
+      font-size: 0.78rem;
+      color: var(--ink-muted);
+      line-height: 2;
+    }
+
+    .reg-block strong {
+      display: block;
+      color: var(--ink);
+      font-size: 0.82rem;
+      margin-bottom: 0.25rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 1.5rem 2rem;
+      max-width: var(--page);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-copy {
+      font-size: 0.7rem;
+      color: var(--ink-muted);
+      letter-spacing: 0.05em;
+    }
+
+    .footer-mark {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent);
+      opacity: 0.5;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      #hero {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 5rem 0 4rem;
+      }
+
+      .hero-mark {
+        font-size: 5.5rem;
+      }
+
+      .about-body,
+      .services-grid,
+      .why-grid,
+      #contact {
+        grid-template-columns: 1fr;
+      }
+
+      .services-grid {
+        border: none;
+        gap: 1px;
+        background: var(--rule);
+      }
+
+      .service-item {
+        border-right: none;
+        background: var(--paper);
+      }
+
+      .about-col-right,
+      .contact-right {
+        border-left: none;
+        padding-left: 0;
+        border-top: 1px solid var(--rule);
+        padding-top: 2rem;
+      }
+
+      nav {
+        padding: 0 1.25rem;
+      }
+
+      .nav-links {
+        gap: 1.25rem;
+      }
+
+      main {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+      }
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#hero" class="nav-logo" aria-label="AetherTech home">
+      <span class="ae" aria-hidden="true">æ</span>
+      <span class="wordmark">AetherTech</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- HERO -->
+    <section id="hero" aria-label="Introduction">
+      <div class="hero-mark" aria-hidden="true">æ</div>
+      <div class="hero-text">
+        <h1>AetherTech</h1>
+        <p class="tagline">Technology for Commerce &amp; Payments</p>
+        <p class="intro">
+          We design, integrate, and operate digital platforms for organisations in the commerce and payments sector, from initial architecture through to live operations.
+        </p>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" aria-labelledby="about-heading">
+      <div class="section-label" id="about-heading">About Us</div>
+      <div class="about-body reveal">
+        <div class="about-col-left">
+          <p>
+            AetherTech Solutions is a technology consultancy and software solutions firm headquartered in Kuala Lumpur. We serve payment intermediaries, merchant operators, and digital service businesses on enterprise-grade implementations.
+          </p>
+          <p>
+            Our team carries deep, practical experience across payment infrastructure, financial systems integration, and managed platform operations, spanning the full engagement lifecycle.
+          </p>
+        </div>
+        <div class="about-col-right">
+          <p>
+            We maintain established working relationships with banks and payment gateway providers, enabling direct integration pathways and streamlined compliance processes for the clients we support.
+          </p>
+          <p>
+            Our work sits at the convergence of software engineering and financial technology, delivered to the standards that regulated and high-transaction environments demand.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" aria-labelledby="services-heading">
+      <div class="section-label" id="services-heading">Services</div>
+      <div class="services-grid reveal">
+        <div class="service-item">
+          <div class="service-num">01</div>
+          <div class="service-title">Platform Development</div>
+          <p class="service-body">
+            End-to-end development of commerce and payments platforms, built to the operational and regulatory requirements of the financial services sector.
+          </p>
+        </div>
+        <div class="service-item">
+          <div class="service-num">02</div>
+          <div class="service-title">System Integration</div>
+          <p class="service-body">
+            Direct integration with banking infrastructure, payment gateways, and third-party financial systems. We manage and abstract the technical and operational complexity of these connections on behalf of our clients.
+          </p>
+        </div>
+        <div class="service-item">
+          <div class="service-num">03</div>
+          <div class="service-title">Managed Operations</div>
+          <p class="service-body">
+            Ongoing platform monitoring, maintenance, and optimisation delivered as a managed service. Clients retain full operational visibility while we manage the underlying technology.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY -->
+    <section id="why" aria-labelledby="why-heading">
+      <div class="section-label" id="why-heading">Why AetherTech</div>
+      <div class="why-grid reveal">
+        <div class="why-item">
+          <div class="why-title">Domain Expertise</div>
+          <p class="why-body">
+            Our team carries deep, practical experience in financial technology, spanning payment processing, billing, reconciliation, and the compliance requirements that accompany them.
+          </p>
+        </div>
+        <div class="why-item">
+          <div class="why-title">Institutional Relationships</div>
+          <p class="why-body">
+            Our established relationships with banks and payment network providers translate into faster integrations, cleaner implementations, and reliable operational support for the platforms we manage.
+          </p>
+        </div>
+        <div class="why-item">
+          <div class="why-title">Enterprise Delivery</div>
+          <p class="why-body">
+            We operate to enterprise standards, with structured engagements, documented processes, and accountability at every stage of delivery.
+          </p>
+        </div>
+        <div class="why-item">
+          <div class="why-title">End-to-End Ownership</div>
+          <p class="why-body">
+            We remain fully engaged post-deployment, providing ongoing monitoring, performance optimisation, and technical support as standard components of every engagement.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" aria-labelledby="contact-heading">
+      <div class="contact-left">
+        <div class="section-label" id="contact-heading">Contact</div>
+        <p class="contact-cta">
+          For project enquiries, partnership discussions, or technical consultations:
+        </p>
+        <a href="mailto:hello@aethertech.work" class="contact-email">hello@aethertech.work</a>
+      </div>
+      <div class="contact-right">
+        <div class="reg-block">
+          <strong>AetherTech Solutions Sdn. Bhd.</strong>
+          Company No.: 202601018518 (1680615-U)<br>
+          Kuala Lumpur, Malaysia
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <span class="footer-copy">&copy; <span id="yr"></span> AetherTech Solutions Sdn. Bhd. All rights reserved.</span>
+    <span class="footer-mark" aria-hidden="true">æ</span>
+  </footer>
+
+  <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+
+</body>
+</html>
